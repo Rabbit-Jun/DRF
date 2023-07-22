@@ -1,5 +1,5 @@
 from rest_framework import serializers 
-from .models import Todo 
+from .models import Todo
 class TodoSimpleSerializer(serializers.ModelSerializer): 
     class Meta: 
         model = Todo 
@@ -13,3 +13,4 @@ class TodoCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model =Todo
         fields =("title","description","important")
+    
