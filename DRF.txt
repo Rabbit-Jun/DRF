@@ -1,0 +1,79 @@
+API (Application ProGram Interface)
+
+REST(Representaional Safe Transfer)
+자원(Resorce)의 표현(Representation)에 희한 상태 전달
+(State Trnsfer)로 구성되어 있으며, 자원의 식별, 표현, 전송, 상태 변화에 관한 규칙을 정의한다
+
+Restful 서비스 (API)
+RESTful 서비스에서는 Controller에서 요청 받은 내용을 처리하고 데이터를 가공해서처리 결과를 특정 플랫폼에 적합한 형태의 View로 만들어서 응답하지 않고 데이터만 처리하거나 응답 데이터가 있다면 JSON/XML로 응답한다
+
+JSON(JavaScript Object Notation)은 데이터를 저장하고 교환하는 데 사용되는 경량의 데이터 형식입니다. JSON은 텍스트 형식이며, 읽기 쉽고 쓰기도 간편하기 때문에 널리 사용됩니다. 주로 웹 서버와 클라이언트 간에 데이터를 교환하는 데 사용되며, 다른 프로그래밍 언어에서도 사용할 수 있습니다. JSON은 두 가지 기본 구조를 가지고 있습니다.
+이름-값 쌍의 집합: JSON 객체는 중괄호({})로 묶인 이름-값 쌍의 집합입니다. 이름은 문자열이고, 값은 유효한 JSON 데이터 타입(문자열, 숫자, 배열, 객체, 참/거짓 또는 null)이어야 합니다.
+예시:
+{
+  "name": "John Doe",
+  "age": 30,
+  "isStudent": false
+}
+값의 순서있는 목록: JSON 배열은 대괄호([])로 묶인 값의 순서있는 목록입니다. 배열의 각 요소는 유효한 JSON 데이터 타입이어야 합니다.
+예시:
+[
+  "Apple",
+  "Banana",
+  "Cherry"
+]
+JSON은 XML과 비교하여 구문이 간단하고 사람이 읽기 쉽습니다. 또한, 구문 분석과 처리에 더 적은 자원이 필요하므로, 웹 애플리케이션에서 효율적으로 사용할 수 있습니다.
+
+POSTMAN
+API를 개발, 테스트, 공유 및 문서화하는데 사용되는 API 클라이언트
+백엔드 포인트 URL을 입력하는  테스트에 사용되며 서버로 요청을 보내고 서버에서 응답을 받아 api가 잘 동작하는지 확인할 수 있다.
+
+rest_framework를 INSTALLED_APPS에 기입함으로써, Django는 Django REST framework를 프로젝트에서 사용할 수 있는 것으로 인식하게 됩니다.
+
+Django에서 serializers 폴더를 만드는 주요 이유는 프로젝트의 구조와 가독성을 높여주며, 직렬화(Serialization) 관련 코드를 모듈화하고 관리하기 쉽게 만들기 위해서입니다. 
+직렬화(Serialization)는 Django REST framework에서 강력한 기능 중 하나로, 복잡한 데이터 구조나 객체를 JSON과 같은 경량화된 형식으로 변환하는 과정을 포함합니다.
+
+
+#simpleserializer
+erializer = TodoSimpleSerializer(todos, many=True)는 Django REST framework에서 제공하는 직렬화 기능을 사용하는 코드입니다. 
+이 구문은 todos 데이터를 JSON 방식으로 변환하기 위해 TodoSimpleSerializer 클래스를 사용하며, 
+여러 개의 객체들이 포함된 경우(many=True) 이를 모두 처리하기 위해 그 옵션을 설정하는 것을 의미합니다. 
+여기서 TodoSimpleSerializer는 사용자가 정의한 직렬화 클래스로, 데이터를 JSON 형식으로 변환하는 데 사용되는 필드 및 맵핑을 설정합니다. 
+이 직렬화 클래스는 일반적으로 serializers.py 파일에 정의되어 있으며,
+ serializers.Serializer 또는 serializers.ModelSerializer을 상속받아 작성됩니다. 
+ todos는 직렬화할 데이터를 나타내며, 이 데이터는 보통 Django ORM을 통해 DB에서 가져온 데이터 또는 필터된 데이터입니다. 
+ many=True 옵션은 todos 데이터에 여러 개의 객체(복수)가 포함된 경우에 사용됩니다. 
+ 이 옵션을 사용하면, 직렬화 클래스가 각 객체를 개별적으로 처리하고 결과를 반환하는 방식으로 직렬화 작업을 수행합니다. 
+ 결과적으로, 이 코드는 주어진 todos 데이터를 JSON 형식으로 직렬화하여 반환하는 작업을 수행합니다. 
+ 이렇게 직렬화한 데이터는 웹 API를 통해 클라이언트와 통신하는 데 사용됩니다.
+
+
+ include() 함수는 여러 앱의 URL 패턴을 Django 프로젝트의 urls.py 파일에 통합할 수 있게 합니다. 
+
+#django restframework여기서 부터 시작
+ createsuperuser 명령어를 통해 django의 기본 user 모델에 선언되어 사용자 모델을 선언하고 관리자를 설정할 수 있다.
+
+ 필드명         타입
+ username       문자열 : 흔히 아는 id가 들어가는 필드 ,필수적으로 요구
+ first_name     문자열 : 영문 이름에서 사용되는 이름 개념, 선택적으로 사용 가능
+ latst_name     문자열 : 영문 이름에서 사용된 성, 선택적 사용 가능
+ email          문자열 : 회원의 이메일 주소, 선택적 사용 가능
+ password       문자열 : 비밀번호, 필수적으로 요구
+
+클라이언트가 서버에 요청을 보낼 때는 Http라는 프토콜로 통신하게 됨, 이때 내가 유저임을 확인받는 과정을 인증이라고 함
+인증 방식
+1.id와 pw 그대로 보내기 : 장고가 알아서 확인, 보안이 매우 취약
+2.세션&쿠키 : 세션(서버 쪽에서 저장하는 정보), 쿠키(클라이언트의 자체적인 저장소, 임시 저장소 느낌), 로그인 후 발급되는 세션 id를 쿠키에 저장후 요청시 꺼내 보냄, ID,PW가 노출될 걱정은 없으나 세션 ID를 가진 사람이 유저인척 가능
+3.토크 &JWT :회원가입시 토큰 발급 후 저장, 토큰 자체에 사용자에 대한 정보 있어서 이 토큰만으로도 유저 구분 가능 (토큰은 암호화 방식임), 암호화에 필요한 키카 SECRET_KEY , 여기에 유효기간 까지 있으니 보안상 좋음 
+
+
+#회원가입 프로세스
+1.사용자가 정해진 폼에 따라 데이터를 입력(username, email,password, password2)
+2.해당 데이터가 들어오면 id가 중복되지 않는지,비밀번호가 너무 짧거나 쉽지는 않은지 검사 #시리얼라이저의 또 다른 기능인 Validation(검사 기능) 활용
+3.2단계 통솨시 회원 생성 #시리얼라이저의 create() 메서드 활용
+4 토큰 생성
+
+
+
+
+시리얼라이저는 요청으로 들어온 데이터를 django 데이터로 변환해준다.
